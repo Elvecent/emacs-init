@@ -1,4 +1,4 @@
-(load "~/emacs/general.el")
-(load "~/emacs/buffer-management.el")
-(load "~/emacs/dev-tools.el")
-(load "~/emacs/useless-but-fun.el")
+(load "~/emacs-init/general.el")
+(load "~/emacs-init/buffer-management.el")
+(load "~/emacs-init/dev-tools.el")
+(load "~/emacs-init/useless-but-fun.el")
