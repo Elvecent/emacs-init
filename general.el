@@ -1,15 +1,20 @@
-(custom-set-variables
- '(custom-enabled-themes (quote (tango)))
- '(inhibit-startup-screen t)
- 
- '(column-number-mode t)
- '(display-battery-mode t)
- '(show-paren-mode t)
- (unless mobile
-  '(tool-bar-mode nil))
+(setq custom-vars
+      (append custom-vars
+	      (list
+	       '(custom-enabled-themes (quote (tango)))
+	       '(inhibit-startup-screen t)
+	       
+	       '(column-number-mode t)
+	       '(display-battery-mode t)
+	       '(show-paren-mode t)
+	       
+	       '(org-catch-invisible-edits (quote (show-and-error)))
+	       '(org-cycle-emulate-tab (quote (whitestart))))))
 
- '(org-catch-invisible-edits (quote (show-and-error)))
- '(org-cycle-emulate-tab (quote (whitestart))))
+(unless mobile
+  (setq custom-vars
+	(append custom-vars
+		(list '(tool-bar-mode nil)))))
 
 (setq create-lockfiles nil)
 

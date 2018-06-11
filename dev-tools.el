@@ -1,8 +1,10 @@
-(custom-set-variables
- '(coq-indent-semicolon-tactical 0)
- '(coq-script-indent t)
+(setq custom-vars
+      (append custom-vars
+	      (list
+	       '(coq-indent-semicolon-tactical 0)
+	       '(coq-script-indent t)
  
- '(haskell-process-show-debug-tips nil))
+	       '(haskell-process-show-debug-tips nil))))
 
 ;; Coq
 (load "~/.emacs.d/lisp/PG/generic/proof-site")
