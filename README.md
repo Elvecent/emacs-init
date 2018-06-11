@@ -1,3 +1,4 @@
-#Emacs initialization#
+Emacs initialization
+====================
 
 Just load `master.el`.
