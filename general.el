@@ -1,5 +1,5 @@
 (custom-set-variables
- '(custom-enabled-themes 'tango)
+ '(custom-enabled-themes (quote (tango)))
  '(inhibit-startup-screen t)
  
  '(column-number-mode t)
@@ -8,8 +8,8 @@
  (unless mobile
   '(tool-bar-mode nil))
 
- '(org-catch-invisible-edits 'show-and-error)
- '(org-cycle-emulate-tab 'whitestart))
+ '(org-catch-invisible-edits (quote (show-and-error)))
+ '(org-cycle-emulate-tab (quote (whitestart))))
 
 (setq create-lockfiles nil)
 
