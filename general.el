@@ -5,7 +5,8 @@
  '(column-number-mode t)
  '(display-battery-mode t)
  '(show-paren-mode t)
- '(tool-bar-mode nil)
+ (unless mobile
+  '(tool-bar-mode nil))
 
  '(org-catch-invisible-edits 'show-and-error)
  '(org-cycle-emulate-tab 'whitestart))
