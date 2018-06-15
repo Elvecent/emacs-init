@@ -9,7 +9,13 @@
 	       '(show-paren-mode t)
 	       
 	       '(org-catch-invisible-edits (quote (show-and-error)))
-	       '(org-cycle-emulate-tab (quote (whitestart))))))
+	       '(org-cycle-emulate-tab (quote whitestart))
+	       '(org-adapt-indentation t)
+	       '(org-format-latex-options
+		 (quote
+		  (:foreground default :background default :scale 1.25 :html-foreground "Black" :html-background "Transparent" :html-scale 1.0 :matchers
+			       ("begin" "$1" "$" "$$" "\\(" "\\["))))
+	       )))
 
 (unless mobile
   (setq custom-vars
@@ -17,6 +23,12 @@
 		(list '(tool-bar-mode nil)))))
 
 (setq create-lockfiles nil)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((latex . t)
+   (haskell . t))
+ )
 
 (require 'package)
 (add-to-list

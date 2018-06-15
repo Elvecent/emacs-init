@@ -19,8 +19,8 @@
 (add-hook 'coq-mode-hook #'company-coq-mode)
 
 ;; Haskell
+(require 'inf-haskell)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(setq haskell-process-type 'stack-ghci)
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook 'hindent-mode)
