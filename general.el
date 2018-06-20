@@ -1,6 +1,19 @@
 (setq custom-vars
       (append custom-vars
 	      (list
+	        '(package-selected-packages
+		  (quote
+		   (org
+		    org-brain
+		    w3m
+		    selectric-mode
+		    multiple-cursors
+		    hindent
+		    haskell-mode
+		    google-translate
+		    company-coq
+		    auctex)))
+
 	       '(custom-enabled-themes (quote (tango)))
 	       '(inhibit-startup-screen t)
 	       '(create-lockfiles nil)
