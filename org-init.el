@@ -1,7 +1,8 @@
 (setq custom-vars
       (append custom-vars
 	      (list
-	       
+	       '(org-default-notes-file (concat org-directory "/notes.org"))
+	       '(org-refile-use-outline-path (quote file))
 	       '(org-agenda-files (list "~/org"))
 	       '(org-hide-leading-stars t)
 	       '(org-confirm-babel-evaluate nil)
@@ -33,7 +34,7 @@
 (setq org-todo-keywords '((sequence
 			   "TODO" "TOBREAK"
 			   "|"
-			   "DONE" "CANCELED")))
+			   "DONE" "CANCELLED")))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -41,6 +42,11 @@
    (haskell . t)
    (racket . t))
  )
+
+(setq org-refile-targets
+      '(("learning.org" :maxlevel . 5)
+	("formalities.org" :maxlevel . 5)
+	("personal.org" :maxlevel . 5)))
 
 (org-link-set-parameters
  "w3m" :follow

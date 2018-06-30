@@ -43,8 +43,10 @@
 (global-set-key (kbd "<s-right>")  'buf-move-right)
 
 ;; Transparency/opacity
+(defvar active-opacity 80)
+(defvar inactive-opacity 50)
 
-(set-frame-parameter (selected-frame) 'alpha 75)
+(set-frame-parameter (selected-frame) 'alpha active-opacity)
 
 (defun toggle-opacity ()
    (interactive)
@@ -56,9 +58,12 @@
                      ;; Also handle undocumented (<active> <inactive>) form.
                      ((numberp (cadr alpha)) (cadr alpha)))
                100)
-          '(75 . 50) '(100 . 100)))))
+	  (cons active-opacity inactive-opacity)
+	'(100 . 100)))))
 
 (global-set-key (kbd "s-o") 'toggle-opacity)
+
+;; w3m
 
 (add-hook 'w3m-load-hook
 	  '(lambda ()
@@ -67,6 +72,8 @@
 	      (caddr (assoc "application/pdf"
 			    w3m-content-type-alist))
 	      (list "emacsclient" (quote file)))))
+
+;; package
 
 (require 'package)
 (add-to-list
