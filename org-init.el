@@ -1,7 +1,8 @@
 (setq custom-vars
       (append custom-vars
 	      (list
-	       '(org-default-notes-file (concat org-directory "/notes.org"))
+	       '(org-default-notes-file
+		 (concat org-directory "/notes.org"))
 	       '(org-refile-use-outline-path (quote file))
 	       '(org-agenda-files (list "~/org"))
 	       '(org-hide-leading-stars t)
@@ -31,10 +32,29 @@
 		   ("begin" "$1" "$" "$$" "\\(" "\\["))))
 	       )))
 
-(setq org-todo-keywords '((sequence
-			   "TODO" "TOBREAK"
-			   "|"
-			   "DONE" "CANCELLED")))
+(setq org-todo-keywords
+		  '((sequence
+		     "TODO" "TOBREAK"
+		     "|"
+		     "DONE" "CANCELLED")))
+	    
+(add-hook 'org-mode-hook 
+          (lambda ()
+            (setq org-refile-targets
+		  '(("learning.org" :maxlevel . 5)
+		    ("formalities.org" :maxlevel . 5)
+		    ("personal.org" :maxlevel . 5)))
+	    (org-link-set-parameters
+	     "w3m" :follow
+	     (lambda (path)
+	       (w3m-goto-url (concat "http:" path))))
+	    
+	    (global-set-key "\C-cl" 'org-store-link)
+	    (global-set-key "\C-cc" 'org-capture)
+	    (global-set-key "\C-ca" 'org-agenda)
+	    (global-set-key "\C-cb" 'org-iswitchb)
+
+	    (visual-line-mode)))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -42,17 +62,3 @@
    (haskell . t)
    (racket . t))
  )
-
-(setq org-refile-targets
-      '(("learning.org" :maxlevel . 5)
-	("formalities.org" :maxlevel . 5)
-	("personal.org" :maxlevel . 5)))
-
-(org-link-set-parameters
- "w3m" :follow
- (lambda (path) (w3m-goto-url (concat "http:" path))))
-
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)

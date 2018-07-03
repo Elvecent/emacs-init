@@ -28,6 +28,18 @@
 	  '(display-battery-mode t)
 	  '(show-paren-mode t))))
 
+
+;; package
+
+(require 'package)
+(add-to-list
+ 'package-archives
+ '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+
 (unless mobile
   (progn
     (setq
@@ -72,11 +84,3 @@
 	      (caddr (assoc "application/pdf"
 			    w3m-content-type-alist))
 	      (list "emacsclient" (quote file)))))
-
-;; package
-
-(require 'package)
-(add-to-list
- 'package-archives
- '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
