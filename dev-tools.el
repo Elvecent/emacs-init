@@ -3,6 +3,9 @@
 	      (list
 	       '(coq-indent-semicolon-tactical 0)
 	       '(coq-script-indent t)
+	       '(proof-layout-windows-on-visit-file t)
+	       '(proof-next-command-insert-space nil)
+	       '(proof-three-window-mode-policy (quote hybrid))
  
 	       '(haskell-process-show-debug-tips nil))))
 

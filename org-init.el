@@ -48,6 +48,8 @@
 	     "w3m" :follow
 	     (lambda (path)
 	       (w3m-goto-url (concat "http:" path))))
+
+	    (add-to-list 'org-link-frame-setup '(file . find-file))
 	    
 	    (global-set-key "\C-cl" 'org-store-link)
 	    (global-set-key "\C-cc" 'org-capture)

@@ -1,6 +1,7 @@
-(defvar custom-vars '())
+(if (and (fboundp 'server-running-p) 
+         (not (server-running-p)))
+    (server-start))
 
-(server-start)
 (load "~/emacs-init/general.el")
 (load "~/emacs-init/org-init.el")
 (load "~/emacs-init/buffer-management.el")
@@ -10,3 +11,5 @@
 ;; (load "~/emacs-init/useless-but-fun.el")
 
 (apply 'custom-set-variables custom-vars)
+
+(find-file "~/org/master.org")

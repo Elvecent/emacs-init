@@ -3,16 +3,19 @@
  (append custom-vars
 	 (list
 	  '(package-selected-packages
-	    (quote (org
-		    org-brain
-		    w3m
-		    selectric-mode
-		    multiple-cursors
-		    hindent
-		    haskell-mode
-		    google-translate
-		    company-coq
-		    auctex)))
+	    (quote
+	     (smooth-scrolling
+	      buffer-move 
+	      org 
+	      org-brain 
+	      w3m 
+	      selectric-mode 
+	      multiple-cursors 
+	      hindent 
+	      haskell-mode 
+	      google-translate 
+	      company-coq 
+	      auctex)))
 	  
 	  '(custom-enabled-themes (quote (tango)))
 	  '(inhibit-startup-screen t)
@@ -36,6 +39,18 @@
  'package-archives
  '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
+
+(unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
+
+(use-package try
+	:ensure t)
+
+(use-package which-key
+	:ensure t 
+	:config
+	(which-key-mode))
 
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
