@@ -32,23 +32,21 @@
 		   ("begin" "$1" "$" "$$" "\\(" "\\["))))
 	       )))
 
+(require 'org)
+
 (setq org-todo-keywords
 		  '((sequence
 		     "TODO" "TOBREAK"
 		     "|"
 		     "DONE" "CANCELLED")))
-	    
+
 (add-hook 'org-mode-hook 
           (lambda ()
             (setq org-refile-targets
 		  '(("learning.org" :maxlevel . 5)
 		    ("formalities.org" :maxlevel . 5)
 		    ("personal.org" :maxlevel . 5)))
-	    (org-link-set-parameters
-	     "w3m" :follow
-	     (lambda (path)
-	       (w3m-goto-url (concat "http:" path))))
-
+	    
 	    (add-to-list 'org-link-frame-setup '(file . find-file))
 	    
 	    (global-set-key "\C-cl" 'org-store-link)

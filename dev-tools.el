@@ -10,7 +10,10 @@
 	       '(haskell-process-show-debug-tips nil))))
 
 ;; Coq
+
+(add-to-list 'load-path "~/.opam/system/share/emacs/site-lisp/")
 (load "~/.emacs.d/lisp/PG/generic/proof-site")
+(require 'ob-coq)
 
 (eval-after-load "proof-script" '(progn
  (define-key proof-mode-map [(control n)] 
@@ -27,3 +30,14 @@
 
 (require 'hindent)
 (add-hook 'haskell-mode-hook 'hindent-mode)
+
+;; Agda
+(add-hook 'agda2-mode-hook
+	  (lambda ()
+	    (push '("->" . ?→) prettify-symbols-alist)
+	    (push '("forall" . ?∀) prettify-symbols-alist)
+	    (setq prettify-symbols-unprettify-at-point t)
+	    (prettify-symbols-mode)))
+
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))

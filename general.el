@@ -16,17 +16,13 @@
 	      google-translate 
 	      company-coq 
 	      auctex)))
+
+	  '(browse-url-browser-function (quote eww-browse-url))
 	  
 	  '(custom-enabled-themes (quote (tango)))
 	  '(inhibit-startup-screen t)
 	  '(create-lockfiles nil)
-	  
-	  '(browse-url-browser-function
-	    (quote w3m-browse-url))
-	  '(w3m-doc-view-content-types
-	    (quote ("application/dvi"
-		    "application/postscript")))
-	  
+	  	  
 	  '(column-number-mode t)
 	  '(display-battery-mode t)
 	  '(show-paren-mode t))))
@@ -38,6 +34,9 @@
 (add-to-list
  'package-archives
  '("melpa" . "http://melpa.org/packages/"))
+(add-to-list
+ 'package-archives
+ '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -90,12 +89,4 @@
 
 (global-set-key (kbd "s-o") 'toggle-opacity)
 
-;; w3m
-
-(add-hook 'w3m-load-hook
-	  '(lambda ()
-	     (pdf-tools-install)
-	     (setf
-	      (caddr (assoc "application/pdf"
-			    w3m-content-type-alist))
-	      (list "emacsclient" (quote file)))))
+(pdf-tools-install)
